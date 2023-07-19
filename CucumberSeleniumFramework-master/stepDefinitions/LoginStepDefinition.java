@@ -1,96 +1,79 @@
 package stepDefinitions;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.JavascriptExecutor;
-//import org.openqa.selenium.Point;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import junit.framework.Assert;
 
-public class LoginStepDefinition{
+import java.util.concurrent.TimeUnit;
 
-	 WebDriver driver;
+public class LoginStepDefinition {
+
+	WebDriver driver;
+
 	@Before
 	public void Setup() {
-		
-	
-	 System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
-	 driver = new ChromeDriver(); 
-	 driver.manage().deleteAllCookies();
-	driver.manage().window().maximize();
-	 driver.manage().timeouts().implicitlyWait(10, null);	
-	 }
-	 
+
+
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+	}
 	@After
 	public void teardown() {
 		driver.quit();
-		
+
+	}
+	@Given("^user is already on Login Page$")
+	public void user_already_on_login_page() {
+		driver.get("https://saucedemo.com");
+		String Title_OF_Login = driver.getTitle();
+		System.out.println(Title_OF_Login);
+		Assert.assertEquals("Swag Labs", Title_OF_Login);
+
+	}
+	@When("^title of login page is Swap Labs$")
+	public void title_of_login_page_is_free_CRM() {
+		String title_verify = driver.getTitle();
+		System.out.println(title_verify);
+		Assert.assertEquals("Swag Labs", title_verify);
+	}
+	@When("^user enters username and password$")
+	public void user_enters_username_and_password() {
+		driver.findElement(By.id("user-name")).sendKeys("standard_user");
+		driver.findElement(By.id("password")).sendKeys("secret_sauce");
+
 	}
 
-	
-	
-	
-	 @Given("^user is already on Login Page$")
-	 public void user_already_on_login_page(){
-	
-	 driver.get("https://www.freecrm.com/index.html");
-	 System.out.println("Commitesdsddd");
+	@Then("^user clicks on login button$")
+	public void user_clicks_on_login_button() throws InterruptedException {
+
+		driver.findElement(By.id("login-button")).click();
+		Thread.sleep(5000);
+
+	}
+
+	 @Then("^user is on home page$")
+	 public void user_is_on_home_page(){
+	 String title = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
+	 System.out.println("Home Page title ::"+ title);
+	 Assert.assertEquals("Products", title);
 	 }
-}	
-
-
-//	 @When("^title of login page is Free CRM$")
-//	 public void title_of_login_page_is_free_CRM(){
-//	 String title = driver.getTitle();
-//	 System.out.println(title);
-//	 Assert.assertEquals("#1 Free CRM for Any Business: Online Customer Relationship Software", title);
-//	 }
-//	
-//	 //Reg Exp:
-//	 //1. \"([^\"]*)\"
-//	 //2. \"(.*)\"
-//	
-//	 @Then("^user enters \"(.*)\" and \"(.*)\"$")
-//	 public void user_enters_username_and_password(String username, String password){
-//	 driver.findElement(By.name("username")).sendKeys(username);
-//	 driver.findElement(By.name("password")).sendKeys(password);
-//	 }
-//	
-//	 @Then("^user clicks on login button$")
-//	 public void user_clicks_on_login_button() {
-//	 WebElement loginBtn =
-//	 driver.findElement(By.xpath("//input[@type='submit']"));
-//	 JavascriptExecutor js = (JavascriptExecutor)driver;
-//	 js.executeScript("arguments[0].click();", loginBtn);
-//	 }
-//	
-//	
-//	 @Then("^user is on home page$")
-//	 public void user_is_on_hopme_page(){
-//	 String title = driver.getTitle();
-//	 System.out.println("Home Page title ::"+ title);
-//	 Assert.assertEquals("CRMPRO", title);
-//	 }
 //	 
-//	 @Then("^user moves to new contact page$")
-//	 public void user_moves_to_new_contact_page() {
-//		driver.switchTo().frame("mainpanel");
-//		Actions action = new Actions(driver);
-//		action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Contacts')]"))).build().perform();
-//		driver.findElement(By.xpath("//a[contains(text(),'New Contact')]")).click();
-//		
-//		}
+	 @Then("^Close the browser$")
+		 public void Close_the_browser() {
+
+		driver.quit();
+		}
 //	 
 //	 
 //	 @Then("^user enters contact details \"(.*)\" and \"(.*)\" and \"(.*)\"$")
@@ -111,3 +94,4 @@ public class LoginStepDefinition{
 //	
 //
 //}
+}
