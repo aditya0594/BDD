@@ -17,15 +17,14 @@ package stepDefinitions;
 //import cucumber.api.java.en.When;
 //import junit.framework.Assert;
 //
-////data table with maps : for parameterization of test cases
-//
+//////data table with maps : for parameterization of test cases
+////
 //public class DealsStepWithMapDefinition {
 //
 //	WebDriver driver;
-//
 //	@Given("^user is already on Login Page$")
 //	public void user_already_on_login_page() {
-//		System.setProperty("webdriver.chrome.driver", "/Users/naveenkhunteta/Downloads/chromedriver");
+///		System.setProperty("webdriver.chrome.driver", "/Users/naveenkhunteta/Downloads/chromedriver");
 //		driver = new ChromeDriver();
 //		driver.get("https://www.freecrm.com/index.html");
 //	}
@@ -80,9 +79,9 @@ package stepDefinitions;
 //			driver.findElement(By.id("amount")).sendKeys(data.get("amount"));
 //			driver.findElement(By.id("probability")).sendKeys(data.get("probability"));
 //			driver.findElement(By.id("commission")).sendKeys(data.get("commission"));
-//			
+//
 //			driver.findElement(By.xpath("//input[@type='submit' and @value='Save']")).click(); //save button
-//			
+//
 //			//move to new deal page:
 //			Actions action = new Actions(driver);
 //			action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Deals')]"))).build().perform();
@@ -90,7 +89,7 @@ package stepDefinitions;
 //
 //		}
 //
-//		
+//
 //	}
 //
 //	@Then("^Close the browser$")

@@ -37,7 +37,6 @@
     <orderEntry type="library" name="Maven: io.cucumber:messages:21.0.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:tag-expressions:5.0.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-expressions:16.1.2" level="project" />
-    <orderEntry type="library" name="Maven: io.cucumber:datatable:7.11.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-plugin:7.11.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:docstring:7.11.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:html-formatter:20.2.1" level="project" />
@@ -112,5 +111,9 @@
     <orderEntry type="library" name="Maven: org.eclipse.sisu:org.eclipse.sisu.inject:0.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-component-annotations:1.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-classworlds:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-picocontainer:4.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.picocontainer:picocontainer:2.15" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:datatable-dependencies:1.1.12" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:datatable:1.0.3" level="project" />
   </component>
 </module>
