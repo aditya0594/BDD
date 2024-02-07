@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,7 +30,7 @@ public class RegisterStepDefinition{
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 	}
 
@@ -50,8 +51,8 @@ public class RegisterStepDefinition{
 	@Then("^Enter Firstname and Lastname$")
 	public void user_enters_Firstname_and_lastname(DataTable credentials) {
 		List<List<String>> data = credentials.asLists();
-		driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys(data.get(0).get(0));
-		driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys(data.get(0).get(1));
+		driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys(data.get(1).get(0));
+		driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys(data.get(1).get(1));
 	}
 
 
@@ -59,8 +60,8 @@ public class RegisterStepDefinition{
 	public void Enter_Address(DataTable AllData) throws InterruptedException {
 		List<List<String>> data = AllData.asLists();
 		driver.findElement(By.xpath("//textarea[@class='form-control ng-pristine ng-untouched ng-valid']")).sendKeys(data.get(0).get(0));
-		driver.findElement(By.xpath("//input[@type='email']")).sendKeys(data.get(0).get(1));
-		driver.findElement(By.xpath("//input[@type='tel']")).sendKeys(data.get(0).get(2));
+		driver.findElement(By.xpath("//input[@type='email']")).sendKeys(data.get(1).get(1));
+		driver.findElement(By.xpath("//input[@type='tel']")).sendKeys(data.get(1).get(2));
 
 		driver.findElement(By.xpath("//input[@value='Male']")).click();
 		driver.findElement(By.xpath("//input[@id='checkbox1']")).click();
@@ -71,14 +72,29 @@ public class RegisterStepDefinition{
 		driver.findElement(By.xpath("//*[@id=\"msdd\"]")).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class ='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all']")));
-		Select lang = new Select(driver.findElement(By.xpath("//*[@class ='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all']")));
-		List<WebElement> list = lang.getOptions();
-		System.out.println(list);
+		//driver.findElement(By.xpath("//*[@class ='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all']");
+		driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[7]/div/multi-select/div[2]/ul/li[8]")).click();
+		// scroll to the element on the page
+		Thread.sleep(5000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		// scroll to the element on the page
+		WebElement element2 = driver.findElement(By.xpath("//input[@id='secondpassword']"));
+		js.executeScript("arguments[0].scrollIntoView();", element2);
 		Thread.sleep(10000);
+		driver.findElement(By.xpath("//div[6]")).click();
+		driver.findElement(By.xpath("//select[@id='yearbox']")).sendKeys(data.get(1).get(7));
+		driver.findElement(By.xpath("//select[@placeholder='Month']")).sendKeys(data.get(1).get(8));
+		driver.findElement(By.xpath("//select[@id='daybox']")).sendKeys(data.get(1).get(9));
+		driver.findElement(By.xpath("//input[@id='firstpassword']")).sendKeys(data.get(1).get(10));
+		driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys(data.get(1).get(11));
 
-		driver.findElement(By.xpath("")).sendKeys(data.get(0).get(5));
-		Thread.sleep(3000);
 	}
+	@Then("^Click on the Refresh button$")
+	public void Click_on_the_Refresh_button() {
+		driver.findElement(By.xpath("//button[@id='Button1']")).click();
+	}
+
+
 	@After
 	public void teardown() {
 		driver.quit();
