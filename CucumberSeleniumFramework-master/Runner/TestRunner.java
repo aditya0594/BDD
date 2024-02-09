@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 	@RunWith(Cucumber.class)
 
 	@CucumberOptions(
-			features = "CucumberSeleniumFramework-master/Features/Register.feature",//the path of the feature files
+			features = "C:\\Users\\Aditya Pawar\\IdeaProjects\\CucumberSeleniumFramework-master\\CucumberSeleniumFramework-master\\Features\\Register.feature",//the path of the feature files
 			glue={"stepDefinitions"},
 			dryRun = false ,//to check the mapping is proper between feature file and step def file//the path of the step definition files
 			//to generate different types of reporting

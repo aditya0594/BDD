@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 
+import Factory.driverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -16,15 +17,17 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.time.Duration;
 import java.util.List;
 
 
-public class RegisterStepDefinition{
+public class RegisterStepDefinition extends driverFactory {
 
 	static WebDriver driver;
-	@Before
+	@BeforeTest
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "DriverChrome/chromedriver_win.exe");
 		ChromeOptions options = new ChromeOptions();
@@ -66,9 +69,7 @@ public class RegisterStepDefinition{
 		driver.findElement(By.xpath("//input[@value='Male']")).click();
 		driver.findElement(By.xpath("//input[@id='checkbox1']")).click();
 		String languageSelect = data.get(0).get(5);
-		//String xpath = "//*[contains(text(),"+ languageSelect +")";
 
-		//driver.findElement(By.xpath("//*[contains(text(),'English')")).click();
 		driver.findElement(By.xpath("//*[@id=\"msdd\"]")).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class ='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all']")));
@@ -95,10 +96,12 @@ public class RegisterStepDefinition{
 	}
 
 
-	@After
+
+	@AfterTest
 	public void teardown() {
 		driver.quit();
 	}
+
 
 
 /*

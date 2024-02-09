@@ -89,7 +89,6 @@
     <orderEntry type="library" name="Maven: dev.failsafe:failsafe:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-ie-driver:4.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:4.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.beust:jcommander:1.82" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.87.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec-http:4.1.87.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.87.Final" level="project" />
@@ -160,5 +159,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.picocontainer:picocontainer:2.15" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:datatable-dependencies:1.1.12" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:datatable:7.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:7.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.82" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.webjars:jquery:3.6.1" level="project" />
   </component>
 </module>
